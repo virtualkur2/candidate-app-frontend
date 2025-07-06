@@ -71,7 +71,15 @@ export class CandidateForm implements OnInit, OnDestroy {
       }
   }
 
-  onFileSelected(event: Event): void {}
+  onFileSelected(event: Event): void {
+    const element = event.currentTarget as HTMLInputElement;
+    const fileList: FileList | null = element.files;
+    this.selectedFile = fileList?.length ? fileList[0] : null;
+    this.candidateForm.patchValue({
+      excelFile: this.selectedFile,
+    });
+    this.candidateForm.get('excelFile')?.updateValueAndValidity();
+  }
 
   onSubmit(): void {}
 }
