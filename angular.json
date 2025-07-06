@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "babel-frontend": {
+    "app-candidate-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -62,10 +62,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "babel-frontend:build:production"
+              "buildTarget": "app-candidate-frontend:build:production"
             },
             "development": {
-              "buildTarget": "babel-frontend:build:development"
+              "buildTarget": "app-candidate-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,24 +74,10 @@
           "builder": "@angular/build:extract-i18n"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "@angular/material/prebuilt-themes/cyan-orange.css",
-              "src/styles.scss"
-            ]
+            "setupFile": ["src/setup-jest.ts"]
           }
         }
       }
