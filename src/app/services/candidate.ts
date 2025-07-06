@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 export interface Candidate {
   name: string;
   surname: string;
-  seniority: 'junior'| 'mid-level' | 'senior';
+  seniority: 'junior' | 'senior';
   years: number;
   availability: boolean;
 }
