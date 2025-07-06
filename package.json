@@ -1,5 +1,5 @@
 {
-  "name": "app-candidate-frontend",
+  "name": "candidate-app-frontend",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

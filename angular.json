@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "app-candidate-frontend": {
+    "candidate-app-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -62,10 +62,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "app-candidate-frontend:build:production"
+              "buildTarget": "candidate-app-frontend:build:production"
             },
             "development": {
-              "buildTarget": "app-candidate-frontend:build:development"
+              "buildTarget": "candidate-app-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
