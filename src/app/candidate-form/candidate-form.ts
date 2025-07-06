@@ -81,5 +81,46 @@ export class CandidateForm implements OnInit, OnDestroy {
     this.candidateForm.get('excelFile')?.updateValueAndValidity();
   }
 
-  onSubmit(): void {}
+  onSubmit(): void {
+    if (this.candidateForm.valid && this.selectedFile) {
+      this.isLoading = true;
+      const formData = new FormData();
+      formData.append('name', this.candidateForm.get('name')?.value);
+      formData.append('surname', this.candidateForm.get('surname')?.value);
+      formData.append('file', this.selectedFile, this.selectedFile.name);
+
+      this.candidateService.uploadCandidate(formData).subscribe({
+        next: (_response) => {
+          this.isLoading = false;
+          this.snackbar.open('Candidate submitted successfully!', 'Close', {
+            duration: 3000,
+            panelClass: ['snackbar-success']
+          });
+          this.candidateForm.reset();
+          this.selectedFile = null;
+          if (document.querySelector('input[type="file"]')) {
+            (document.querySelector('input[type="file"]') as HTMLInputElement).value = '';
+          }
+          Object.keys(this.candidateForm.controls).forEach(key => {
+            this.candidateForm.get(key)?.setErrors(null);
+          });
+        },
+        error: (error) => {
+          this.isLoading = false;
+          console.error('Error submitting candidate:', error);
+          const errorMessage = error.error?.message ?? 'Failed to submit candidate. Please try again.';
+          this.snackbar.open(errorMessage, 'Close', {
+            duration: 5000,
+            panelClass: ['snackbar-error'],
+          });
+        }
+      })
+    } else {
+      this.candidateForm.markAllAsTouched();
+      this.snackbar.open('Please fill in all required fields and upload an Excel file.', 'Close', {
+        duration: 5000,
+        panelClass: ['snackbar-warning'],
+      });
+    }
+  }
 }
