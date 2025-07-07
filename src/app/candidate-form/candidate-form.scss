@@ -18,6 +18,7 @@
 
 .candidates-table-card {
     min-width: 800px;
+    position: relative;
 }
 
 .card-title {
@@ -131,5 +132,16 @@
 }
 
 .icon-unavailable {
+  color: #e53935 !important;
+}
+
+.clear-candidates-fab {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  z-index: 10;
+}
+
+.delete-icon-red {
   color: #e53935 !important;
 }

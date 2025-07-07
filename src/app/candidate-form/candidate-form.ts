@@ -123,4 +123,13 @@ export class CandidateForm implements OnInit, OnDestroy {
       });
     }
   }
+
+  clearCandidates(): void {
+    this.candidateService.clearPersistedCandidates();
+    this.candidates = [];
+    this.snackbar.open('Candidate list cleared.', 'Close', {
+      duration: 3000,
+      panelClass: ['snackbar-success']
+    });
+  }
 }

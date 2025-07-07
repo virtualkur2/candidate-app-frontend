@@ -87,6 +87,9 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
       </div>
+      <button mat-fab color="warn" class="clear-candidates-fab" (click)="clearCandidates()" aria-label="Clear candidates" [disabled]="candidates.length === 0">
+        <mat-icon [ngClass]="candidates.length === 0 ? '' : 'delete-icon-red'">delete</mat-icon>
+      </button>
     </mat-card-content>
   </mat-card>
   
