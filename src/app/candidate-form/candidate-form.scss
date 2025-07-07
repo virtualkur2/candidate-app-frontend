@@ -46,7 +46,7 @@
     border: 2px dashed #d1d5db;
     border-radius: 8px;
     padding: 24px;
-    background-color: #f9fafb;
+    background-color: #FAF9FD;
     transition: background-color 0.2s ease-in-out;
     &:hover {
       background-color: #f3f4f6;
@@ -61,6 +61,11 @@
     margin-bottom: 12px;
     border-radius: 6px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
   
 .file-name-display {
@@ -70,7 +75,7 @@
   
 .no-file-display {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: #FAF9FD;
       }
   
 .file-error {
@@ -119,4 +124,12 @@
 .table-cell {
     padding: 12px 16px;
     border-bottom: 1px solid #e5e7eb;
+}
+
+.icon-available {
+  color: #43a047 !important;
+}
+
+.icon-unavailable {
+  color: #e53935 !important;
 }
